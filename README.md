@@ -130,11 +130,11 @@ When a poll is closed:
 ```
 
 When implementing a feature, cut the headings and bullets from this file and
-paste it into the appropriate feature file. The `slimline` executable will do
-this for you if you attempt to execute the new scenario or expectation:
+paste it into the appropriate feature file. The `slim` executable will do this
+for you if you attempt to execute the new scenario or expectation:
 
 ```
-> slimine "When a poll is closed"
+> slim "When a poll is closed"
 
 Start working on 2 new scenarios under "When a poll is closed"? (yes/no)
 > yes
