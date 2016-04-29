@@ -6,7 +6,7 @@ Slimline does BDD just like you are used to, only using a compact syntax for
 expressing specifications in natural language, and a more direct binding of that
 language onto automation code.
 
-# Features
+## Features
 
 Headings and bullet points are the syntax of feature files:
 
@@ -23,7 +23,7 @@ When visitors vote on a poll:
 * A chart shows vote distribution
 ```
 
-# A module per feature
+## A module per feature
 
 Features are implemented as JavaScript modules.
 
@@ -112,7 +112,7 @@ When visitors vote on a poll:
 Passed: 1 feature, 1 scenario, 1 expectation
 ```
 
-# Workflow
+## Workflow
 
 Ideas for new features are captured under `features/ideas.feature` as headings
 and bullets, e.g:
