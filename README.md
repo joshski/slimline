@@ -93,7 +93,7 @@ Passed: 1 feature, 2 scenarios, 3 expectations
 Polls
 
 When visitors vote on a poll:
-✓ Votes are aggregated
+✓ Votes are tallied
 ✓ A chart shows vote distribution
 
 Passed: 1 feature, 1 scenario, 2 expectations
@@ -102,12 +102,12 @@ Passed: 1 feature, 1 scenario, 2 expectations
 ...or just one expectation:
 
 ```
-> slim "Votes are aggregated"
+> slim "Votes are tallied"
 
 Polls
 
 When visitors vote on a poll:
-✓ Votes are aggregated
+✓ Votes are tallied
 
 Passed: 1 feature, 1 scenario, 1 expectation
 ```
