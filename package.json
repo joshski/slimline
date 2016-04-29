@@ -1,0 +1,9 @@
+{
+  "name": "slimline",
+  "version": "1.0.0",
+  "description": "Lightweight BDD for JavaScript",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Josh Chisholm <josh@feautrist.co.uk>",
+  "license": "MIT"
+}
