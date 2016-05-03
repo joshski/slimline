@@ -4,7 +4,7 @@
   "description": "Lightweight BDD for JavaScript",
   "main": "index.js",
   "bin": {
-    "ccimage": "bin/slimline.bin.js"
+    "slim": "bin/slimline.bin.js"
   },
   "scripts": {},
   "author": "Josh Chisholm <josh@feautrist.co.uk>",
