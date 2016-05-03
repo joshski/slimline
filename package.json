@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Lightweight BDD for JavaScript",
   "main": "index.js",
+  "bin": {
+    "ccimage": "bin/slimline.bin.js"
+  },
   "scripts": {},
   "author": "Josh Chisholm <josh@feautrist.co.uk>",
   "license": "MIT"
