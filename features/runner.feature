@@ -1,8 +1,7 @@
 Runner
 
-When all features are executed:
+When features are executed:
 * Prints count of features, scenarios and assertions
-* Prints count of passing assertions
 
 When there are pending assertions:
 * Prints count of pending assertions

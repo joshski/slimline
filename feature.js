@@ -5,11 +5,16 @@ function Feature(path, contents) {
 }
 
 Feature.prototype.requireImplementation = function() {
+  var implementationPath = './' + this.path + '.js';
   try {
-    var FeatureClass = require('./' + this.path + '.js');
+    var FeatureClass = require(implementationPath);
     this.implementation = new FeatureClass();
   } catch (e) {
-    this.implementation = {};
+    if (e.code == 'MODULE_NOT_FOUND') {
+      this.implementation = {};
+    } else {
+      throw new Error('Failed to require ' + implementationPath + "\n" + e.stack);
+    }
   }
 }
 
@@ -60,6 +65,22 @@ Feature.prototype.run = function(report) {
 Feature.prototype.runAssertion = function(step, report) {
   var self = this;
   return new Promise(function(fulfill, reject) {
+    function assert(assertionMethod) {
+      var assertionResult = assertionMethod.apply(self.implementation);
+      if (typeof(assertionResult.then) == 'function') {
+        assertionResult.then(function() {
+          report.assertionPassed(step);
+          fulfill();
+        }).catch(function(e) {
+          report.assertionError(e);
+          fulfill();
+        });
+      } else {
+        report.assertionPassed(step);
+        fulfill();
+      }
+    }
+
     var assertionMethod = self.implementation[step.assertion];
     if (assertionMethod) {
       var headingMethod = self.implementation[step.headingStep.heading];
@@ -67,23 +88,16 @@ Feature.prototype.runAssertion = function(step, report) {
         var headingResult = headingMethod.apply(self.implementation);
         if (typeof(headingResult.then) == 'function') {
           headingResult.then(function() {
-            var assertionResult = assertionMethod.apply(self.implementation);
-            if (typeof(assertionResult.then) == 'function') {
-              assertionResult.then(function() {
-                report.assertionPassed(step);
-                fulfill();
-              });
-            } else {
-              report.assertionPassed(step);
-              fulfill();
-            }
+            assert(assertionMethod);
           }).catch(function(e) {
             report.assertionError(step, e);
             fulfill();
           });
+        } else {
+          assert(assertionMethod);
         }
       } else {
-        report.assertionPending(step);
+        report.assertionSkipped(step);
         fulfill();
       }
     } else {

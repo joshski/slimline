@@ -37,7 +37,7 @@ Runner.prototype.runFeatureFile = function(featureFilePath) {
   return self.read(featureFilePath).then(function(contents) {
     return new Feature(featureFilePath, contents).run(self.report);
   }).catch(function(e) {
-    e.stack = "Failed to read feature file: " + featureFile + "\n" + e.stack;
+    e.stack = "Failed to run " + featureFilePath + "\n" + e.stack;
     self.report.unhandledError(e);
   });
 }
